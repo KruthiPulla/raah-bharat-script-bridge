@@ -100,7 +100,7 @@ const Transliterator = () => {
               <div className="space-y-2">
                 <label className="text-sm font-medium text-foreground">From Script:</label>
                 <Select value={fromScript} onValueChange={setFromScript}>
-                  <SelectTrigger className="bg-white border-border">
+                  <SelectTrigger className="bg-card border-border text-foreground">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -127,7 +127,7 @@ const Transliterator = () => {
               <div className="space-y-2">
                 <label className="text-sm font-medium text-foreground">To Script:</label>
                 <Select value={toScript} onValueChange={setToScript}>
-                  <SelectTrigger className="bg-white border-border">
+                  <SelectTrigger className="bg-card border-border text-foreground">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -149,7 +149,7 @@ const Transliterator = () => {
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
                   placeholder="Enter text to transliterate..."
-                  className="min-h-[200px] text-lg bg-white border-border resize-none"
+                  className="min-h-[200px] text-lg bg-card border-border resize-none text-foreground"
                 />
               </div>
 
