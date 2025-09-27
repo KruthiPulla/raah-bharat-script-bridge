@@ -8,50 +8,50 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 42 100% 98%;
-    --foreground: 25 25% 15%;
+    --background: 220 20% 10%;
+    --foreground: 210 40% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 25 25% 15%;
+    --card: 220 15% 12%;
+    --card-foreground: 210 40% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 25 25% 15%;
+    --popover: 220 15% 12%;
+    --popover-foreground: 210 40% 95%;
 
-    --primary: 30 100% 50%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 170 100% 50%;
+    --primary-foreground: 220 20% 10%;
 
-    --secondary: 160 60% 45%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 190 50% 40%;
+    --secondary-foreground: 210 40% 95%;
 
-    --muted: 42 20% 96%;
-    --muted-foreground: 25 15% 55%;
+    --muted: 220 10% 20%;
+    --muted-foreground: 210 20% 65%;
 
-    --accent: 220 70% 55%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 170 100% 50%;
+    --accent-foreground: 220 20% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 42 20% 90%;
-    --input: 42 20% 94%;
-    --ring: 30 100% 50%;
+    --border: 220 10% 25%;
+    --input: 220 10% 18%;
+    --ring: 170 100% 50%;
 
-    /* Custom Raah colors */
-    --saffron: 30 100% 60%;
-    --saffron-light: 35 100% 70%;
-    --emerald: 160 60% 45%;
-    --emerald-light: 160 50% 55%;
-    --royal: 220 70% 55%;
-    --warm-bg: 42 100% 98%;
+    /* Custom Raah colors - Dark Theme */
+    --saffron: 170 100% 50%;
+    --saffron-light: 175 80% 60%;
+    --emerald: 170 100% 50%;
+    --emerald-light: 175 80% 60%;
+    --royal: 190 50% 40%;
+    --warm-bg: 220 20% 10%;
     
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--saffron)), hsl(var(--saffron-light)));
-    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(42 30% 98%));
+    /* Gradients - Dark Theme */
+    --gradient-hero: linear-gradient(135deg, hsl(220 20% 10%), hsl(210 25% 15%));
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(220 15% 12%));
     --gradient-accent: linear-gradient(120deg, hsl(var(--emerald)), hsl(var(--royal)));
     
-    /* Shadows */
-    --shadow-warm: 0 10px 30px -10px hsl(var(--saffron) / 0.3);
-    --shadow-soft: 0 4px 20px -4px hsl(25 25% 15% / 0.1);
+    /* Shadows - Dark Theme */
+    --shadow-warm: 0 10px 30px -10px hsl(var(--emerald) / 0.3);
+    --shadow-soft: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
 
     --radius: 0.5rem;
 
