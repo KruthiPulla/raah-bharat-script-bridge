@@ -3,8 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRightLeft, Copy, Volume2 } from "lucide-react";
+import { ArrowRightLeft, Copy, Volume2, Camera } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import CameraOCR from "./CameraOCR";
 
 const scripts = [
   { value: "devanagari", label: "देवनागरी (Devanagari)", example: "नमस्ते" },
@@ -24,6 +25,7 @@ const Transliterator = () => {
   const [toScript, setToScript] = useState("gurmukhi");
   const [inputText, setInputText] = useState("नमस्ते, मैं राह का उपयोग कर रहा हूँ");
   const [outputText, setOutputText] = useState("ਨਮਸਤੇ, ਮੈਂ ਰਾਹ ਕਾ ਉਪਯੋਗ ਕਰ ਰਿਹਾ ਹੂੰ");
+  const [isCameraOpen, setIsCameraOpen] = useState(false);
   const { toast } = useToast();
 
   const handleSwapScripts = () => {
@@ -57,6 +59,16 @@ const Transliterator = () => {
     }
   };
 
+  const handleCameraText = (detectedText: string) => {
+    setInputText(detectedText);
+    // Here you would normally call your transliteration API
+    // For demo purposes, we'll just show the detected text
+    toast({
+      title: "Text captured!",
+      description: "Text from image has been added to the input field",
+    });
+  };
+
   return (
     <section id="transliterator" className="py-20 px-4 bg-background">
       <div className="container mx-auto max-w-6xl">
@@ -64,9 +76,18 @@ const Transliterator = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Script Transliterator
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-6">
             Convert text from one Indian script to another while preserving the sound and meaning
           </p>
+          <Button 
+            onClick={() => setIsCameraOpen(true)}
+            variant="primary" 
+            size="lg"
+            className="shadow-warm"
+          >
+            <Camera className="w-5 h-5 mr-2" />
+            Scan Text with Camera
+          </Button>
         </div>
 
         <Card className="bg-gradient-card shadow-soft border-0">
@@ -169,6 +190,12 @@ const Transliterator = () => {
             </div>
           </CardContent>
         </Card>
+
+        <CameraOCR 
+          isOpen={isCameraOpen}
+          onClose={() => setIsCameraOpen(false)}
+          onTextDetected={handleCameraText}
+        />
       </div>
     </section>
   );

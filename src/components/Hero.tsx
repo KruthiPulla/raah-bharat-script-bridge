@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Languages, Map } from "lucide-react";
+import { ArrowDown, Camera, Languages, Map } from "lucide-react";
+import raahLogo from "@/assets/raah-logo.png";
 
 const Hero = () => {
   const scrollToTransliterator = () => {
@@ -17,16 +18,19 @@ const Hero = () => {
       
       <div className="container mx-auto text-center relative z-10">
         <div className="max-w-4xl mx-auto">
-          <div className="mb-6 flex justify-center">
-            <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 shadow-warm">
-              <Languages className="w-12 h-12 text-white" />
+          <div className="mb-8 flex justify-center">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 shadow-warm">
+              <img 
+                src={raahLogo} 
+                alt="Raah Logo - Unlocking every direction" 
+                className="w-32 h-32 object-contain"
+              />
             </div>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-            राह
-            <span className="block text-3xl md:text-4xl font-normal mt-2 opacity-90">
-              Your Path Across Scripts
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+            <span className="block text-2xl md:text-3xl font-normal mb-2 opacity-90">
+              Bridge Every Script, Unlock Every Direction
             </span>
           </h1>
           
