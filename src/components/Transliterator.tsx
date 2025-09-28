@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRightLeft, Copy, Volume2, Camera } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import CameraOCR from "./CameraOCR";
+import { transliterateText, getSpeechLangForScript } from "@/lib/transliteration";
 
 const scripts = [
   { value: "devanagari", label: "देवनागरी (Devanagari)", example: "नमस्ते" },
@@ -26,6 +27,7 @@ const Transliterator = () => {
   const [inputText, setInputText] = useState("नमस्ते, मैं राह का उपयोग कर रहा हूँ");
   const [outputText, setOutputText] = useState("ਨਮਸਤੇ, ਮੈਂ ਰਾਹ ਕਾ ਉਪਯੋਗ ਕਰ ਰਿਹਾ ਹੂੰ");
   const [isCameraOpen, setIsCameraOpen] = useState(false);
+  const [isTransliterating, setIsTransliterating] = useState(false);
   const { toast } = useToast();
 
   const handleSwapScripts = () => {
@@ -54,15 +56,30 @@ const Transliterator = () => {
   const handleSpeak = () => {
     if ('speechSynthesis' in window) {
       const utterance = new SpeechSynthesisUtterance(outputText);
-      utterance.lang = 'hi-IN';
+      utterance.lang = getSpeechLangForScript(toScript);
       speechSynthesis.speak(utterance);
+    }
+  };
+
+  const handleTransliterate = async () => {
+    try {
+      setIsTransliterating(true);
+      const result = await transliterateText(fromScript, toScript, inputText);
+      setOutputText(result);
+      toast({ title: "Transliteration complete" });
+    } catch (error) {
+      toast({
+        title: "Transliteration failed",
+        description: (error as Error).message || "Please try again",
+        variant: "destructive",
+      });
+    } finally {
+      setIsTransliterating(false);
     }
   };
 
   const handleCameraText = (detectedText: string) => {
     setInputText(detectedText);
-    // Here you would normally call your transliteration API
-    // For demo purposes, we'll just show the detected text
     toast({
       title: "Text captured!",
       description: "Text from image has been added to the input field",
@@ -184,8 +201,8 @@ const Transliterator = () => {
             </div>
 
             <div className="text-center">
-              <Button variant="primary" size="lg" className="shadow-warm">
-                Transliterate Text
+              <Button variant="primary" size="lg" className="shadow-warm" onClick={handleTransliterate} disabled={isTransliterating}>
+                {isTransliterating ? "Transliterating..." : "Transliterate Text"}
               </Button>
             </div>
           </CardContent>
